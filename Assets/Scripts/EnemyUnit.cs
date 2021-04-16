@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyUnit : MonoBehaviour
 {
+    public DataCarrier stateMachine;
+
     UpdateUI updateUI;
 
     public string enemyName;
@@ -13,18 +15,26 @@ public class EnemyUnit : MonoBehaviour
     //array of questions
     public string[] questions;
 
+    public string[] allAnswers;
+
     public List<int> incorrectlyAnsweredQs;
 
-    public string[] allAnswers;
     public string[] correctAnswers;
 
     public string[][] answerArrays; //a jagged array - stores an array within an array
 
+    Sprite[] spr;
+
     void Awake()
     {
+        stateMachine = Camera.main.GetComponent<StateMachine>().levelData;
+
         updateUI = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<UpdateUI>();
 
         incorrectlyAnsweredQs.Add(-1);
+
+        questions = stateMachine.GetQuestions();
+        allAnswers = stateMachine.allLevelAnswers;
 
         #region Error Prevention
         if ((allAnswers.Length) % 3 != 0)

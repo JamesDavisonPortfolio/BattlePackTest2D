@@ -13,6 +13,9 @@ public class DataCarrier : ScriptableObject
     public int questionsAnsweredIncorrectly;
 
     public string[] levelQuestions;
+
+    public string[] allLevelAnswers;
+
     public string[] levelAnswers;
 
     public int[] questionAttempts;

@@ -95,29 +95,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06c22df5123bb143be08639cab2e02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateMachine: {fileID: 0}
   enemyName: ENEMY NAME!
   maxHP: 5
   curHP: 0
   questions:
-  - Question 1
-  - Question 2
-  - Question 3
-  - Question 4
-  - Question 5
-  incorrectlyAnsweredQs: 
+  - 
+  - 
+  - 
+  - 
+  - 
   allAnswers:
-  - 0 Answer A:n
-  - 0 Answer B:y
-  - 0 Answer C:n
-  - 1 Answer A:y
-  - 1 Answer B:n
-  - 1 Answer C:n
-  - 2 Answer A:n
-  - 2 Answer B:n
-  - 2 Answer C:y
-  - 3 Answer A:y
-  - 3 Answer B:n
-  - 3 Answer C:n
-  - 4 Answer A:n
-  - 4 Answer B:n
-  - 4 Answer C:y
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  incorrectlyAnsweredQs: 
+  correctAnswers: []
