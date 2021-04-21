@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8aca994de44e44bbaf4a8e009a8c36, type: 3}
   m_Name: LevelOneData
   m_EditorClassIdentifier: 
-  levelScoreValue: 3920
-  bossScoreValue: 1000
+  levelScoreValue: 3510
+  bossScoreValue: 900
   timeToCompleteMins: 0
-  timeToCompleteSecs: 8
+  timeToCompleteSecs: 49
   questionsAnsweredIncorrectly: 0
+  levelInformation:
+  - Page one info
+  - Page two info
+  - Page three info
+  - Page four info
+  - Page five info
   levelQuestions:
   - Question 1
   - Question 2
@@ -24,8 +30,8 @@ MonoBehaviour:
   - Question 4
   - Question 5
   allLevelAnswers:
-  - 1 - Wrong:n
-  - 1 - Correct:y
+  - 1 - Wrong:y
+  - 1 - Correct:n
   - 1 - Wrong:n
   - 2 - Wrong:n
   - 2 - Wrong:n
@@ -40,10 +46,10 @@ MonoBehaviour:
   - 5 -  Wrong:n
   - 5 -  Wrong:n
   levelAnswers:
-  - 1 - Correct
+  - 1 - Wrong
   - 2 - Correct
   - 3 - Correct
   - 4 - Correct
   - 5 - Correct
-  questionAttempts: 0000000000000000000000000000000000000000
-  totalWrong: 0
+  questionAttempts: 0000000001000000000000000000000000000000
+  totalWrong: 1

@@ -10,6 +10,7 @@ public class InfoPanelScript : MonoBehaviour
     public int pageNumber;
     public TextMeshProUGUI cyberInfoText;
     public TextMeshProUGUI cyberPageNumber;
+    public DataCarrier levelData;
     public GameObject backButton;
     public GameObject forwardButton;
     public GameObject[] pages;
@@ -60,18 +61,7 @@ public class InfoPanelScript : MonoBehaviour
 
     void ChangePage()
     {
-        switch (pageNumber)
-        {
-            case 1:
-                cyberInfoText.SetText("First Page Information");
-                break;
-            case 2:
-                cyberInfoText.SetText("Secong Page Information");
-                break;
-            case 3:
-                cyberInfoText.SetText("Third Page Information");
-                break;
-        }
+        cyberInfoText.SetText(levelData.levelInformation[pageNumber - 1]);
         cyberPageNumber.SetText(pageNumber.ToString() + " / " + keysFound.ToString());
         CheckButtons();
     }
