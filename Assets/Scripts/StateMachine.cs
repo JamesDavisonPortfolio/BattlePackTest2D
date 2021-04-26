@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class StateMachine : MonoBehaviour
@@ -51,6 +52,7 @@ public class StateMachine : MonoBehaviour
 
         GameObject enemyGo = Instantiate(enemyPrefab, enemyLocation);
         enemyUnit = enemyGo.GetComponent<EnemyUnit>();
+        enemyLocation.GetComponentInChildren<Image>().sprite = enemyUnit.GetComponent<SpriteRenderer>().sprite;
         timesAttempted = new int[enemyUnit.questions.Length];
     }
 
@@ -240,7 +242,7 @@ public class StateMachine : MonoBehaviour
         Debug.Log("Button1 - " + updateUI.option1.text + " - pressed");
         if (clickyButton)
         {
-            UpdateScore(enemyUnit.checkCorrectAnswer(questionNumber, updateUI.option1.text));
+            UpdateScore(enemyUnit.checkCorrectAnswer(questionNumber, updateUI.option1.text, true));
         }
     }
 
@@ -251,7 +253,7 @@ public class StateMachine : MonoBehaviour
     {
         Debug.Log("Button1 - " + updateUI.option2.text + " - pressed");
         if (clickyButton)
-            UpdateScore(enemyUnit.checkCorrectAnswer(questionNumber, updateUI.option2.text));
+            UpdateScore(enemyUnit.checkCorrectAnswer(questionNumber, updateUI.option2.text, true));
     }
 
     /// <summary>
@@ -260,8 +262,7 @@ public class StateMachine : MonoBehaviour
     public void OnButton3()
     {
         Debug.Log("Button1 - " + updateUI.option3.text + " - pressed");
-
         if (clickyButton)
-            UpdateScore(enemyUnit.checkCorrectAnswer(questionNumber, updateUI.option3.text));
+            UpdateScore(enemyUnit.checkCorrectAnswer(questionNumber, updateUI.option3.text, true));
     }
 }

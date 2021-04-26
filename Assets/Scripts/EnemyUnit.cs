@@ -8,11 +8,13 @@ public class EnemyUnit : MonoBehaviour
 
     UpdateUI updateUI;
 
+    [Header ("Enemy Stats")]
     public string enemyName;
     public int maxHP;
-    [HideInInspector] public int curHP;
+    public float curHP;
 
     //array of questions
+    [Header ("Questions")]
     public string[] questions;
 
     public string[] allAnswers;
@@ -23,6 +25,11 @@ public class EnemyUnit : MonoBehaviour
 
     public string[][] answerArrays; //a jagged array - stores an array within an array
 
+    [Header("Sounds")]
+    public AudioClip correct;
+    public AudioClip wrong;
+
+    AudioSource audioSource;
     Sprite[] spr;
 
     void Awake()
@@ -35,6 +42,8 @@ public class EnemyUnit : MonoBehaviour
 
         questions = stateMachine.GetQuestions();
         allAnswers = stateMachine.allLevelAnswers;
+
+        audioSource = GetComponent<AudioSource>();
 
         #region Error Prevention
         if ((allAnswers.Length) % 3 != 0)
@@ -140,13 +149,15 @@ public class EnemyUnit : MonoBehaviour
     /// <param name="questionNumber"> the actual number of the current question </param>
     /// <param name="answer"> the answer the player has just input </param>
     /// <returns></returns>
-    public bool checkCorrectAnswer(int questionNumber, string answer)
+    public bool checkCorrectAnswer(int questionNumber, string answer, bool playSound)
     {
         if (answer == correctAnswers[questionNumber-1])
         {
+            if (playSound) audioSource.PlayOneShot(correct);
             return true;
         }
 
+        if (playSound && !audioSource.isPlaying) audioSource.PlayOneShot(wrong);
         return false;
     }
 

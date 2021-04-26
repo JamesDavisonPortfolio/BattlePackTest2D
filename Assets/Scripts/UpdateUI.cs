@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UpdateUI : MonoBehaviour
 {
-    public Text enemyName;
+    public Scrollbar enemyHP;
     public Text enemyAttack;
     public Text score;
     public Image chance;
@@ -16,6 +16,7 @@ public class UpdateUI : MonoBehaviour
     Coroutine curText = null;
 
     GameObject[] hpCovers;
+    Image hp_Handle;
     [HideInInspector] public int currentQuestion = 0;
 
     EnemyUnit _enemy;
@@ -23,6 +24,9 @@ public class UpdateUI : MonoBehaviour
     void Start()
     {
         hpCovers = GameObject.FindGameObjectsWithTag("EnemyHpCovers");
+
+        Image[] temp = enemyHP.GetComponentsInChildren<Image>();
+        hp_Handle = temp[1];
 
         fullUpdate(1);
     }
@@ -35,8 +39,6 @@ public class UpdateUI : MonoBehaviour
     {
         _enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyUnit>();
 
-        DisplayName();
-
         DisplayHealth();
 
         DisplayQuestion(questionNo);
@@ -44,32 +46,32 @@ public class UpdateUI : MonoBehaviour
     }
 
     #region Display Statements
-    /// <summary>
-    /// updates enemy name plate
-    /// </summary>
-    public void DisplayName()
-    {
-        enemyName.text = _enemy.enemyName;
-    }
 
     /// <summary>
     /// updates the enemy health bar
     /// </summary>
     public void DisplayHealth()
     {
-        for (int i = 0; i < hpCovers.Length; i++)
+        //for (int i = 0; i < hpCovers.Length; i++)
+        //{
+        //    //converts number in the name of the hpCover to an int 
+        //    //then compares it to the hp value of the enemy
+        //    if ((hpCovers[i].name[10] - '0') <= _enemy.curHP - 1)
+        //    {
+        //        hpCovers[i].SetActive(false);
+        //    }
+        //    else
+        //    {
+        //        if (!hpCovers[i].activeSelf)
+        //            hpCovers[i].SetActive(true);
+        //    }
+        //}
+
+        enemyHP.size = (_enemy.curHP / 10) * 2;
+
+        if (enemyHP.size == 0 || _enemy.curHP <= 0)
         {
-            //converts number in the name of the hpCover to an int 
-            //then compares it to the hp value of the enemy
-            if ((hpCovers[i].name[10] - '0') <= _enemy.curHP - 1)
-            {
-                hpCovers[i].SetActive(false);
-            }
-            else
-            {
-                if (!hpCovers[i].activeSelf)
-                    hpCovers[i].SetActive(true);
-            }
+            hp_Handle.enabled = false;
         }
     }
 
@@ -105,7 +107,7 @@ public class UpdateUI : MonoBehaviour
 
         ColorBlock cb = option.GetComponentInParent<Button>().colors;
 
-        if (_enemy.checkCorrectAnswer(currentQuestion + 1, option.text))
+        if (_enemy.checkCorrectAnswer(currentQuestion + 1, option.text, false))
         {
             cb.pressedColor = Color.green;
         }
