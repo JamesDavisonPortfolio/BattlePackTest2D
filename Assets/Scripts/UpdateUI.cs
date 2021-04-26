@@ -13,6 +13,8 @@ public class UpdateUI : MonoBehaviour
     public Text option2;
     public Text option3;
 
+    Coroutine curText = null;
+
     GameObject[] hpCovers;
     [HideInInspector] public int currentQuestion = 0;
 
@@ -81,12 +83,50 @@ public class UpdateUI : MonoBehaviour
 
         try { enemyAttack.text = _enemy.questions[questionNo]; }
         catch { Debug.LogError("INVALID QUESTION INPUTTED");  return; }
+        enemyAttack.text = "";
+
+        curText = StartCoroutine(TextScrolling(enemyAttack, _enemy.questions[questionNo]));
 
         currentQuestion = questionNo;
 
         DisplayButton(ref option1, 0);
         DisplayButton(ref option2, 1);
         DisplayButton(ref option3, 2);
+    }
+
+    /// <summary>
+    /// Updates the display button, changing the text and colour when pressed
+    /// </summary>
+    /// <param name="option"> the button you wish to alter </param>
+    /// <param name="i"> the question (out of 3) you wish to display </param>
+    void DisplayButton(ref Text option, int i)
+    {
+        option.text = _enemy.answerArrays[currentQuestion][i];
+
+        ColorBlock cb = option.GetComponentInParent<Button>().colors;
+
+        if (_enemy.checkCorrectAnswer(currentQuestion + 1, option.text))
+        {
+            cb.pressedColor = Color.green;
+        }
+        else
+        {
+            cb.pressedColor = Color.red;
+        }
+
+        option.GetComponentInParent<Button>().colors = cb;
+    }
+
+    IEnumerator TextScrolling(Text textbox, string targetSpeech)
+    {
+        while (textbox.text != targetSpeech)
+        {
+            textbox.text += targetSpeech[textbox.text.Length];
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+
+        StopCoroutine(curText);
+        curText = null;
     }
 
     /// <summary>
@@ -105,29 +145,6 @@ public class UpdateUI : MonoBehaviour
     public void DisplayChance2(bool enable = false)
     {
         chance.gameObject.SetActive(enable);
-    }
-
-    /// <summary>
-    /// Updates the display button, changing the text and colour when pressed
-    /// </summary>
-    /// <param name="option"> the button you wish to alter </param>
-    /// <param name="i"> the question (out of 3) you wish to display </param>
-    void DisplayButton(ref Text option, int i)
-    {
-        option.text = _enemy.answerArrays[currentQuestion][i];
-
-        ColorBlock cb = option.GetComponentInParent<Button>().colors;
-
-        if (_enemy.checkCorrectAnswer(currentQuestion+1, option.text))
-        {
-            cb.pressedColor = Color.green;
-        }
-        else
-        {
-            cb.pressedColor = Color.red;
-        }
-
-        option.GetComponentInParent<Button>().colors = cb;
     }
 
     /// <summary>
@@ -158,5 +175,4 @@ public class UpdateUI : MonoBehaviour
         else
             return false;
     }
-
 }
