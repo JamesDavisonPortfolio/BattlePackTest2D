@@ -15,7 +15,6 @@ public class UpdateUI : MonoBehaviour
 
     Coroutine curText = null;
 
-    GameObject[] hpCovers;
     Image hp_Handle;
     [HideInInspector] public int currentQuestion = 0;
 
@@ -23,8 +22,6 @@ public class UpdateUI : MonoBehaviour
 
     void Start()
     {
-        hpCovers = GameObject.FindGameObjectsWithTag("EnemyHpCovers");
-
         Image[] temp = enemyHP.GetComponentsInChildren<Image>();
         hp_Handle = temp[1];
 

@@ -25,12 +25,14 @@ public class EnemyUnit : MonoBehaviour
 
     public string[][] answerArrays; //a jagged array - stores an array within an array
 
+    int lQ;
+
     [Header("Sounds")]
     public AudioClip correct;
     public AudioClip wrong;
 
     AudioSource audioSource;
-    Sprite[] spr;
+    Sprite spr;
 
     void Awake()
     {
@@ -153,11 +155,28 @@ public class EnemyUnit : MonoBehaviour
     {
         if (answer == correctAnswers[questionNumber-1])
         {
+            //audioSource.Stop();
             if (playSound) audioSource.PlayOneShot(correct);
             return true;
         }
 
-        if (playSound && !audioSource.isPlaying) audioSource.PlayOneShot(wrong);
+        if (playSound)
+        {
+            if (lQ != questionNumber)
+            {
+                lQ = questionNumber;
+                //audioSource.Stop();
+                audioSource.PlayOneShot(wrong);
+            }
+            else
+            {
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(wrong);
+                }
+            }
+
+        }
         return false;
     }
 
