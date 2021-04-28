@@ -65,7 +65,7 @@ public class IntervalScreenScript : MonoBehaviour
         for(int i = 0; i < questions.Length; i++)
         {
             questionTexts[i].SetText(questions[i]);
-            answerTexts[i].SetText(answers[i]);
+            answerTexts[i].SetText(answers[i] + ". Incorrect Atempts: " + attempts[i]);
             if(attempts[i] == 0)
             {
                 answerTexts[i].color = new Color32(49, 200, 0, 255);
@@ -79,6 +79,11 @@ public class IntervalScreenScript : MonoBehaviour
                 answerTexts[i].color = new Color32(255, 0, 0, 255);
             }
         }
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }

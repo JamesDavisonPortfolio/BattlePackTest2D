@@ -14,6 +14,7 @@ public class InfoPanelScript : MonoBehaviour
     public GameObject backButton;
     public GameObject forwardButton;
     public GameObject[] pages;
+    public GameObject bossBarrier;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -36,15 +37,26 @@ public class InfoPanelScript : MonoBehaviour
     public void keyPickedUp()
     {
         keysFound++;
+        if(keysFound == 5)
+        {
+            Destroy(bossBarrier);
+        }
         ActivateArchive();
     }
 
     public void ActivateArchive()
     {
         gameObject.SetActive(true);
-        pageNumber = keysFound;
-        ChangePage();
-        Time.timeScale = 0;
+        if(keysFound > 0)
+        {
+            pageNumber = keysFound;
+            ChangePage();
+            Time.timeScale = 0;
+        }
+        else
+        {
+            cyberInfoText.SetText("No keys found.");
+        }
     }
 
     public void PageForward()
