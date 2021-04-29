@@ -12,7 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8aca994de44e44bbaf4a8e009a8c36, type: 3}
   m_Name: LevelThreeData
   m_EditorClassIdentifier: 
-  scoreValue: 0
+  levelScoreValue: 0
   bossScoreValue: 0
-  timeToComplete: 0
+  timeToCompleteMins: 0
+  timeToCompleteSecs: 0
   questionsAnsweredIncorrectly: 0
+  levelInformation:
+  - 
+  - 
+  - 
+  - 
+  - 
+  levelQuestions:
+  - 
+  - 
+  - 
+  - 
+  - 
+  allLevelAnswers:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  levelAnswers:
+  - 
+  - 
+  - 
+  - 
+  - 
+  questionAttempts: 
+  totalWrong: 0
