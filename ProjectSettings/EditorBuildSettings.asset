@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MainGame/Scenes/FinalReview.unity
     guid: 38bcdadddf127084eabe9fbe28b78ff9
+  - enabled: 1
+    path: Assets/WebAPIStuff/Scenes/endGameScene.unity
+    guid: f1ea1f50f1cf800419f817e5cba528d6
   m_configObjects: {}
