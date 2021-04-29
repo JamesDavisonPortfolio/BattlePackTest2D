@@ -11,7 +11,7 @@ public class APIController : MonoBehaviour
     public FinalData globalData;
 
     // Private IP Address of webserver api
-    private readonly string APIUrl = "http://192.168.1.76:8000/api/";
+    private readonly string APIUrl = "https://rochester.cc/api/";
 
     void Start()
     {

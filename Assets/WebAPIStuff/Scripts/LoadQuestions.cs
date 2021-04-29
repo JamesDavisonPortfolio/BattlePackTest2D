@@ -10,7 +10,7 @@ public class LoadQuestions : MonoBehaviour
     public DataCarrier LevelTwoDataCarrier;
     public DataCarrier LevelThreeDataCarrier;
 
-    private readonly string websiteAPIURL = "http://192.168.1.76:8000/game/api/";
+    private readonly string websiteAPIURL = "https://rochester.cc/game/api/";
 
     private List<Question> allQuestions;
 
