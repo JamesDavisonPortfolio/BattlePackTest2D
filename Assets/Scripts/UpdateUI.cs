@@ -84,6 +84,11 @@ public class UpdateUI : MonoBehaviour
         catch { Debug.LogError("INVALID QUESTION INPUTTED");  return; }
         enemyAttack.text = "";
 
+        if (curText != null)
+        {
+            StopCoroutine(curText);
+            curText = null;
+        }
         curText = StartCoroutine(TextScrolling(enemyAttack, _enemy.questions[questionNo]));
 
         currentQuestion = questionNo;
@@ -125,6 +130,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         StopCoroutine(curText);
+        Camera.main.GetComponent<StateMachine>().clickyButton = true;
         curText = null;
     }
 
