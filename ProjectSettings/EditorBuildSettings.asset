@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/MainGame/Scenes/LevelOne.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/BattleOne.unity
+    path: Assets/BossBattle/Scenes/BattleOne.unity
     guid: 863056db806fff74bb19fa2ed561ca97
   - enabled: 1
     path: Assets/MainGame/Scenes/LevelOneInterval.unity
