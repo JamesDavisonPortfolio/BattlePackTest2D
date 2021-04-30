@@ -130,7 +130,6 @@ public class UpdateUI : MonoBehaviour
         }
 
         StopCoroutine(curText);
-        Camera.main.GetComponent<StateMachine>().clickyButton = true;
         curText = null;
     }
 
